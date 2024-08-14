@@ -1,0 +1,25 @@
+body{
+    font-family:"Roboto" ;
+    background-color: black;
+    color: rgba(231, 231, 231, 0.868);
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+h1{
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+h3{
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    line-height: 35%;
+}
+
+.contact{
+    text-align: right;
+
+}

@@ -1,103 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf=8">
-    <title>What's in my bag</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="favicon.ico"> 
-    <link rel="stylesheet" href="../What's in my bag/mybag.css">
-</head>
- 
-<body>
-    <h1>What's in my bag</h1>
-    <h2>Click and drag to rummage through my bag.</h2>
-    <p>Last Updated: 08/01/2024 at 11:26pm</p>
+    <!-- Coding By CodingNepal - youtube.com/codingnepal -->
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>What's in my Bag</title>
+        <link rel="icon" type="image/x-icon" href="favicon.ico"> 
 
-    <h4>Headphones</h4>
-    <p>Refurbished. I put a protective cover over the earcups because they keep clacking against each other and I hate the sound.</p>
-    <!--Play music snippet from shuffled playlist when in focus.-->
- 
-    <h4>Glasses</h4>
-    <p> Sometimes I take them off if I don't want to look at people.</p>
- 
-    <h4>Wallet</h4>
-    <p>Broke.</p>
-    <!--Inside the wallet-->
-        <h4>Metro Card</h4>
-        <p>I hate taking trains.</p>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-        <h4>Parsons ID card</h4>
-        <p>School ID card. Expired now.</p>
+        <link rel="stylesheet" href="../What's in my bag/mybag.css">
 
-        <h4>Gatcha Card</h4>
-        <p>This was an overpriced experience.</p>
+        <!--jqueryui for draggable widgetw-->
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+        <script>
+            $( function() {
+                $( " #draggablelarge, #draggablemedium, #draggablesmall" ).draggable({ containment: "#containment-wrapper", scroll: false });
+            } );
 
-        <h4>20$</h4>
-        <p>For coffee maybe.</p>
-
-        <h4>Credit and Debit Card</h4><!--Blurred-->
-        <p>You wish. Click off</p>
-
-        <h4>License</h4><!--Blurred-->
-        <p>It was 80$ to renew this thing.</p>
-
-    <!--Inside the wallet-->
-
-    <h4>Hard Drive</h4>
-    <p>Every graphic designers soul is stored in one of these.</p>
-
-    <h4>Aquaphor</h4>
-    <p>For dry spots and my chronic lip biting.</p>
-
-    <h4>Perfume</h4>
-    <p>Rose scented and oil based so it lasts longer.</p>
-
-    <h4>House Keys</h4><!--Blurred or fake the teeth-->
-    <p>I need to get into my home somehow.</p>
-
-    <h4>Mint, Candy, Gum</h4>
-    <p>For taste.</p>
-
-    <h4>Pens</h4>
-    <p>To write. 0.5 pens are prefered. Sometimes I bring a pocket book with me but I left it at home.</p>
-
-    <h4>Laptop</h4>
-    <p>*click* *click*.</p>
-
-    <h4>Lemon Juice</h4>
-    <p>Guilty pleasure. Mood booster.</p>
-
-    <h4>Duck Keychain</h4>
-    <p>My mom got me this.</p>
-
-    <h4>Mouse</h4>
-    <p>For my laptop.</p>
-
-    <h4>Cat Pic Keychain</h4>
-    <p>I love my tailess cat.</p>
-
-    <h4>Sprout Hair Clip</h4>
-    <p>Pikman Core.</p>
-
-    <h4>Phone.</h4>
-    <p>I don't really have friends. I listen to music and watch my inbox flood. I also text my mom a lot. <i>kidding</i>.</p>
-
-    <h4>Puzzle Cube</h4>
-    <p>You already know what this is.</p>
-
-    <h4>Lint Roller</h4>
-    <p>I have a cat and I wear black.</p>
-
-    <h4>Lighter</h4>
-    <p>I don't smoke. I use this for seals and broken ends.</p>
-
-    <h4>Face Powder</h4>
-    <p>Not too heavy, very natural looking and clean ingredients to avoid clogged pores.</p>
-
-    <h4>Current Read: <i>Women Who Run With The Wolves: Myth and Stories of the Wild Woman Archetype</i> by Clarissa Pinkola Estés.</h4>
-    <p>I think this book is really good for women in their early 20s ( or any age ). Might not be your cup of tea but it's nice to give it a try. Massages your soul as you read and moisturizes you after putting the book down.</p>
+            $("").click(function() {
+                $(this).css("z-index", "9999");
+            });
+           
+        </script>
+        
+    </head>
 
 
-</body>
+    <body>
+        <!--Title and Words-->
+        <div class="page">
+            <div class="topleft">Rummage through my Bag!</div>
+            <div class="topright">As of July 2024</div>
 
+            <div class="title"> What's in my Bag?</div>
+
+            <div class="botleft">Designed and Coded by Gahyi.xyz</div>
+            <div class="botright"></div> <!--On Hover for Description and Title of Item-->
+            
+
+        </div>
+
+        <!--Container where the items can be moved around-->
+        <div id="containment-wrapper">
+            <!--The Bag image-->
+            <img id="mybag" src="../What's in my bag/mybag images/mybag.PNG">
+            <!--Book-->
+            <div id="draggablelarge" class="draggable ui-widget-content">
+                <img class="large" src="../What's in my bag/mybag images/book.PNG">
+            </div>
+            <!--Headphones-->
+            <div id="draggablelarge" class="draggable ui-widget-content">
+                <img class="large" src="../What's in my bag/mybag images/headphones.PNG">
+            </div>
+            <!--Lighter-->
+            <div id="draggablelarge" class="draggable ui-widget-content">
+                <img class="small" src="../What's in my bag/mybag images/lighter.PNG">
+            </div>
+            <!--Wallet-->
+            <div id="draggablelarge" class="draggable ui-widget-content">
+                <img class="small" src="../What's in my bag/mybag images/wallet.PNG">
+            </div>
+            <!--Keys-->
+            <div id="draggablelarge" class="draggable ui-widget-content">
+                <img class="small" src="../What's in my bag/mybag images/keys.PNG">
+            </div>
+            <!--Cube-->
+            <div id="draggablelarge" class="draggable ui-widget-content">
+                <img class="small" src="../What's in my bag/mybag images/cube.PNG">
+            </div>
+            <!--Aquaphor-->
+            <div id="draggablelarge" class="draggable ui-widget-content">
+                <img class="medium" src="../What's in my bag/mybag images/aquaphor.PNG">
+            </div>
+            <!--FacePowder-->
+            <div id="draggablelarge" class="draggable ui-widget-content">
+                <img class="small" src="../What's in my bag/mybag images/facepowder.PNG">
+            </div>
+            <!--Glasses-->
+            <div id="draggablelarge" class="draggable ui-widget-content">
+                <img class="medium" src="../What's in my bag/mybag images/glasses.PNG">
+            </div>
+            <!--Perfume-->
+            <div id="draggablelarge" class="draggable ui-widget-content">
+                <img class="medium" src="../What's in my bag/mybag images/perfume.PNG">
+            </div>
+            <!--External Hard Drive-->
+            <div id="draggablelarge" class="draggable ui-widget-content">
+                <img class="medium" src="../What's in my bag/mybag images/harddrive.PNG">
+            </div>
+            <!--Phone-->
+            <div id="draggablelarge" class="draggable ui-widget-content">
+                <img class="medium" src="../What's in my bag/mybag images/phone.PNG">
+            </div>
+            <!--Keychain-->
+            <div id="draggablesmall" class="draggable ui-widget-content">
+                <img class="small" src="../What's in my bag/mybag images/keychain.PNG">
+            </div>
+            <!--Camera-->
+            <div id="draggablemedium" class="draggable ui-widget-content">
+                <img class="medium" src="../What's in my bag/mybag images/camera.PNG">
+            </div>
+
+
+        </div>
+        
+        
+        
+        
+    </body>
+    
 </html>
