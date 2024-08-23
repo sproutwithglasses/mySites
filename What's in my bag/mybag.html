@@ -9,7 +9,7 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Pinyon+Script&display=swap" rel="stylesheet">
 
         <link rel="stylesheet" href="../What's in my bag/mybag.css">
 
@@ -17,13 +17,11 @@
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
         <script>
-            $( function() {
-                $( " #draggablelarge, #draggablemedium, #draggablesmall" ).draggable({ containment: "#containment-wrapper", scroll: false });
-            } );
 
-            $("").click(function() {
-                $(this).css("z-index", "9999");
-            });
+            $( function() {
+                $( " #draggable " ).draggable({ containment: "#containment-wrapper", scroll: false,  stack: "#containment-wrapper div"  });
+            } );
+        
            
         </script>
         
@@ -33,84 +31,195 @@
     <body>
         <!--Title and Words-->
         <div class="page">
-            <div class="topleft">Rummage through my Bag!</div>
+            <div class="topleft">Click and drag to explore</div>
             <div class="topright">As of July 2024</div>
 
-            <div class="title"> What's in my Bag?</div>
+            <div class="title"></div>
+            <!--Container where the items can be moved around-->
+            <div id="containment-wrapper">
+                <!--The Bag image-->
+                <img id="mybag" src="../What's in my bag/mybag images/mybag.PNG">
+                <!--Book-->
+                <div id="draggable" class="draggable draggablelarge ui-widget-content">
+                    <img class="large" id="hoverbook" src="../What's in my bag/mybag images/book.PNG">
+                </div>   
+                <!--Headphones-->
+                <div id="draggable" class="draggable draggablelarge ui-widget-content">
+                    <img class="large" id="hoverheadphones" src="../What's in my bag/mybag images/headphones.PNG">
+                </div>
+                <!--Lighter-->
+                <div id="draggable" class="draggable draggablesmall ui-widget-content">
+                    <img class="small" id="hoverlighter" src="../What's in my bag/mybag images/lighter.PNG">
+                </div>
+                <!--Wallet-->
+                <div id="draggable" class="draggable draggablesmall ui-widget-content">
+                    <img class="small" id="hoverwallet" src="../What's in my bag/mybag images/wallet.PNG">
+                </div>
+                <!--Keys-->
+                <div id="draggable" class="draggable draggablesmall ui-widget-content">
+                    <img class="small" id="hoverkeys" src="../What's in my bag/mybag images/keys.PNG">
+                </div>
+                <!--Cube-->
+                <div id="draggable" class="draggable draggablesmall ui-widget-content">
+                    <img class="small" id="hovercube" src="../What's in my bag/mybag images/cube.PNG">
+                </div>
+                <!--Aquaphor-->
+                <div id="draggable" class="draggable draggablemedium ui-widget-content">
+                    <img class="medium" id="hoveraquaphor" src="../What's in my bag/mybag images/aquaphor.PNG">
+                </div>
+                <!--FaceCushion-->
+                <div id="draggable" class="draggable draggablesmall ui-widget-content">
+                    <img class="small" id="hoverfacecushion" src="../What's in my bag/mybag images/facecushion.png">
+                </div>
+                <!--Glasses-->
+                <div id="draggable" class="draggable draggablemedium ui-widget-content">
+                    <img class="medium" id="hoverglasses" src="../What's in my bag/mybag images/glasses2.png">
+                </div>
+                <!--Perfume-->
+                <div id="draggable" class="draggable draggablemediumlarge ui-widget-content">
+                    <img class="mediumlarge" id="hoverperfume" src="../What's in my bag/mybag images/perfume2.png">
+                </div>
+                <!--External Hard Drive-->
+                <div id="draggable" class="draggable draggablemedium ui-widget-content">
+                    <img class="medium" id="hoverharddrive" src="../What's in my bag/mybag images/harddrive.PNG">
+                </div>
+                <!--Phone-->
+                <div id="draggable" class="draggable draggablemedium ui-widget-content">
+                    <img class="medium" id="hoverphone" src="../What's in my bag/mybag images/phone.PNG">
+                </div>
+                <!--Keychain-->
+                <div id="draggable" class="draggable draggablesmall ui-widget-content">
+                    <img class="small" id="hoverkeychain" src="../What's in my bag/mybag images/keychain.PNG">
+                </div>
+                <!--Camera-->
+                <div id="draggable" class="draggable draggablemedium ui-widget-content">
+                    <img class="medium" id="hovercamera" src="../What's in my bag/mybag images/camera.PNG">
+                </div>
+                <!--Ashwagandha-->
+                <div id="draggable" class="draggable draggablemedium ui-widget-content">
+                    <img style="rotate: 58deg;" class="medium" id="hoverashwagandha" src="../What's in my bag/mybag images/ashwagandha.png">
+                </div>
+                <!--Trinket-->
+                <div id="draggable" class="draggable draggablesmall ui-widget-content">
+                    <img class="small" id="hovertrinket" src="../What's in my bag/mybag images/trinket.png">
+                </div>
 
-            <div class="botleft">Designed and Coded by Gahyi.xyz</div>
-            <div class="botright"></div> <!--On Hover for Description and Title of Item-->
-            
 
+            </div>
+
+            <div class="bottompage">
+                <div class="botleft">Designed and Coded by Gahyi.xyz</div>
+
+                <!--On Hover for Description and Title of Item-->
+
+                <div class="botright">
+
+                    <!--Book-->
+                    <div class="book hidden">
+                        <div class="itemdes">Hard recoomendation for women in their early 20s ( or any age ). Might not be your cup of tea but it's nice to give it a try. Massages your soul.</div>
+                        <div><i>Women Who Run With The Wolves: Myth and Stories of the Wild Woman Archetype</i> by Clarissa Pinkola Estés</div> 
+                    </div>
+
+                     <!--Headphones-->
+                    <div class="headphones hidden">
+                        <div class="itemdes">For my maladaptive daydreams.</div>
+                        <div>Headphones</div> 
+                    </div>
+
+                    <!--Lighter-->
+                    <div class="lighter hidden">
+                        <div class="itemdes">I don't smoke but I light candles and burn plastic backings on my crocheted doll eyes.</div>
+                        <div>Lighter</div> 
+                    </div>
+
+                    <!--Wallet-->
+                    <div class="wallet hidden">
+                        <div class="itemdes">To carry all the money I don't have. Had this wallet since high school. Purchased after my first real job.</div>
+                        <div>Wallet</div> 
+                    </div>
+
+                    <!--Keys-->
+                    <div class="keys hidden">
+                        <div class="itemdes">To get home.</div>
+                        <div>Keys</div> 
+                    </div>
+
+                    <!--Cube-->
+                    <div class="cube hidden">
+                        <div class="itemdes">Is this not the cutest puzzle cube you've ever seen?</div>
+                        <div>Mahjong Puzzle Cube</div> 
+                    </div>
+
+                    <!--Aquaphor-->
+                    <div class="aquaphor hidden">
+                        <div class="itemdes">Beats every lip balm I've ever tried. Works on dry elbows and eczema spots.</div>
+                        <div>Skin Ointment</div> 
+                    </div>
+
+                    <!--FaceCushion-->
+                    <div class="facecushion hidden">
+                        <div class="itemdes">Light face cushion with SPF. Third time purchasing this one and I stay loyal to my routine.</div>
+                        <div>Face Cushion</div> 
+                    </div>
+
+                    <!--Glasses-->
+                    <div class="glasses hidden">
+                        <div class="itemdes">I am unfortunately blind without these. Sometimes I carry an extra pair in my bag out of fear. My coolest thrift find.</div>
+                        <div>Glasses</div> 
+                    </div>
+
+                    <!--Perfume-->
+                    <div class="perfume hidden">
+                        <div class="itemdes">The scent drew me to this, the bottle threw me off. Smells like honey suckles and very nostalgic.</div>
+                        <div>Floral Perfume</div> 
+                    </div>
+
+                    <!--External Hard Drive-->
+                    <div class="harddrive hidden">
+                        <div class="itemdes">Every graphic designers soul is stored in one of these. I always have to replace the wire bevause my cat chews on it.</div>
+                        <div>External Hard Drive</div> 
+                    </div>
+
+                    <!--Phone-->
+                    <div class="phone hidden">
+                        <div class="itemdes">To call my mom when she leaves me at the grocery store.</div>
+                        <div>iPhone</div> 
+                    </div>
+
+                    <!--Keychain-->
+                    <div class="keychain hidden">
+                        <div class="itemdes">Has a picture of my cat so I can bring him everywhere.</div>
+                        <div>Keychain</div> 
+                    </div>
+
+                    <!--Camera-->
+                    <div class="camera hidden">
+                        <div class="itemdes">Bought this second-hand camera for 20$. Has memories in it.</div>
+                        <div>Digital Camera</div> 
+                    </div>
+
+                    <!--Ashwagandha-->
+                    <div class="ashwagandha hidden">
+                        <div class="itemdes">In a never-ending cycle of disassociating. Two gummies a day.</div>
+                        <div>Ashwaganda Gummies</div> 
+                    </div>
+
+                    <!--Trinket-->
+                    <div class="trinket hidden">
+                        <div class="itemdes">Think I got this for myself as a little graduation gift. Bought from a trinket collector. This isn't usually in my bag but it's cute.</div>
+                        <div>PHB Porcelain Trinket</div> 
+                    </div>
+
+                    
+
+                </div>
+
+            </div>
+        
         </div>
+        
 
-        <!--Container where the items can be moved around-->
-        <div id="containment-wrapper">
-            <!--The Bag image-->
-            <img id="mybag" src="../What's in my bag/mybag images/mybag.PNG">
-            <!--Book-->
-            <div id="draggablelarge" class="draggable ui-widget-content">
-                <img class="large" src="../What's in my bag/mybag images/book.PNG">
-            </div>
-            <!--Headphones-->
-            <div id="draggablelarge" class="draggable ui-widget-content">
-                <img class="large" src="../What's in my bag/mybag images/headphones.PNG">
-            </div>
-            <!--Lighter-->
-            <div id="draggablelarge" class="draggable ui-widget-content">
-                <img class="small" src="../What's in my bag/mybag images/lighter.PNG">
-            </div>
-            <!--Wallet-->
-            <div id="draggablelarge" class="draggable ui-widget-content">
-                <img class="small" src="../What's in my bag/mybag images/wallet.PNG">
-            </div>
-            <!--Keys-->
-            <div id="draggablelarge" class="draggable ui-widget-content">
-                <img class="small" src="../What's in my bag/mybag images/keys.PNG">
-            </div>
-            <!--Cube-->
-            <div id="draggablelarge" class="draggable ui-widget-content">
-                <img class="small" src="../What's in my bag/mybag images/cube.PNG">
-            </div>
-            <!--Aquaphor-->
-            <div id="draggablelarge" class="draggable ui-widget-content">
-                <img class="medium" src="../What's in my bag/mybag images/aquaphor.PNG">
-            </div>
-            <!--FacePowder-->
-            <div id="draggablelarge" class="draggable ui-widget-content">
-                <img class="small" src="../What's in my bag/mybag images/facepowder.PNG">
-            </div>
-            <!--Glasses-->
-            <div id="draggablelarge" class="draggable ui-widget-content">
-                <img class="medium" src="../What's in my bag/mybag images/glasses.PNG">
-            </div>
-            <!--Perfume-->
-            <div id="draggablelarge" class="draggable ui-widget-content">
-                <img class="medium" src="../What's in my bag/mybag images/perfume.PNG">
-            </div>
-            <!--External Hard Drive-->
-            <div id="draggablelarge" class="draggable ui-widget-content">
-                <img class="medium" src="../What's in my bag/mybag images/harddrive.PNG">
-            </div>
-            <!--Phone-->
-            <div id="draggablelarge" class="draggable ui-widget-content">
-                <img class="medium" src="../What's in my bag/mybag images/phone.PNG">
-            </div>
-            <!--Keychain-->
-            <div id="draggablesmall" class="draggable ui-widget-content">
-                <img class="small" src="../What's in my bag/mybag images/keychain.PNG">
-            </div>
-            <!--Camera-->
-            <div id="draggablemedium" class="draggable ui-widget-content">
-                <img class="medium" src="../What's in my bag/mybag images/camera.PNG">
-            </div>
-
-
-        </div>
-        
-        
-        
-        
     </body>
+    <script src="../What's in my bag/mybag.js"></script>
     
 </html>
