@@ -1,5 +1,7 @@
- //book
- $("#hoverbook").hover(function(){
+
+ 
+//book
+$("#hoverbook").hover(function(){
     $('.book').removeClass('hidden');
 },function(){
     $('.book').addClass('hidden');

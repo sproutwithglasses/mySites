@@ -13,6 +13,9 @@
 
         <link rel="stylesheet" href="../What's in my bag/mybag.css">
 
+        <!--Media Query stuff for window resize-->
+        <script src="../What's in my bag/mybagmediaquery.js"></script>
+
         <!--jqueryui for draggable widgetw-->
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
@@ -24,13 +27,16 @@
         
            
         </script>
+
+        
         
     </head>
 
 
     <body>
+
         <!--Title and Words-->
-        <div class="page">
+        <div id="drag" class="page">
             <div class="topleft">Click and drag to explore</div>
             <div class="topright">As of July 2024</div>
 
@@ -38,7 +44,10 @@
             <!--Container where the items can be moved around-->
             <div id="containment-wrapper">
                 <!--The Bag image-->
-                <img id="mybag" src="../What's in my bag/mybag images/mybag.PNG">
+                <div class="flex">
+                    <img id="mybag" src="../What's in my bag/mybag images/mybag.PNG">
+                </div>
+                
                 <!--Book-->
                 <div id="draggable" class="draggable draggablelarge ui-widget-content">
                     <img class="large" id="hoverbook" src="../What's in my bag/mybag images/book.PNG">
@@ -97,7 +106,7 @@
                 </div>
                 <!--Ashwagandha-->
                 <div id="draggable" class="draggable draggablemedium ui-widget-content">
-                    <img style="rotate: 58deg;" class="medium" id="hoverashwagandha" src="../What's in my bag/mybag images/ashwagandha.png">
+                    <img style="rotate: 58deg; width: 98%;" class="medium" id="hoverashwagandha" src="../What's in my bag/mybag images/ashwagandha.png">
                 </div>
                 <!--Trinket-->
                 <div id="draggable" class="draggable draggablesmall ui-widget-content">
@@ -216,6 +225,23 @@
 
             </div>
         
+        </div>
+
+        <!--Mobile Version-->
+        <div id="mobile">
+            <div class="topleft">Scroll through the contents of my bag!</div>
+            <div class="mobilerow">
+                <div class="mobileimg">
+                    <img src="">
+                </div>
+                <div class="mobiledesc">
+
+                </div>
+                
+
+            </div>
+
+
         </div>
         
 
