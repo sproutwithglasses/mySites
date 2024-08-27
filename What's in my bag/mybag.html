@@ -14,7 +14,45 @@
         <link rel="stylesheet" href="../What's in my bag/mybag.css">
 
         <!--Media Query stuff for window resize-->
-        <script src="../What's in my bag/mybagmediaquery.js"></script>
+        <script>
+            //media query resize test
+            document.addEventListener('DOMContentLoaded', () => {
+                const container = document.getElementById('containment-wrapper');
+                const divs = document.querySelectorAll('.draggable');
+
+                let containerRect = container.getBoundingClientRect();
+
+                function updateContainerRect() {
+                    containerRect = container.getBoundingClientRect();
+                }
+
+                function constrainDivs() {
+                    // Get the updated container dimensions
+                    updateContainerRect();
+
+                    divs.forEach(div => {
+                        const divRect = div.getBoundingClientRect();
+                        let left = parseFloat(div.style.left) || 0;
+                        let top = parseFloat(div.style.top) || 0;
+
+                        // Constrain the div within the container
+                        left = Math.max(0, Math.min(left, containerRect.width - divRect.width));
+                        top = Math.max(0, Math.min(top, containerRect.height - divRect.height));
+
+                        // Apply the constrained positions
+                        div.style.left = `${left}px`;
+                        div.style.top = `${top}px`;
+                    });
+                }
+
+
+                // Initial constraint
+                constrainDivs();
+                // Constrain divs on window resize
+                window.addEventListener('resize', constrainDivs);
+            });
+
+        </script>
 
         <!--jqueryui for draggable widgetw-->
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -36,7 +74,7 @@
     <body>
 
         <!--Title and Words-->
-        <div id="drag" class="page">
+        <div class="page">
             <div class="topleft">Click and drag to explore</div>
             <div class="topright">As of July 2024</div>
 
@@ -106,7 +144,7 @@
                 </div>
                 <!--Ashwagandha-->
                 <div id="draggable" class="draggable draggablemedium ui-widget-content">
-                    <img style="rotate: 58deg; width: 98%;" class="medium" id="hoverashwagandha" src="../What's in my bag/mybag images/ashwagandha.png">
+                    <img style="rotate: 90deg;" class="medium" id="hoverashwagandha" src="../What's in my bag/mybag images/ashwagandha.png">
                 </div>
                 <!--Trinket-->
                 <div id="draggable" class="draggable draggablesmall ui-widget-content">
@@ -117,11 +155,11 @@
             </div>
 
             <div class="bottompage">
-                <div class="botleft">Designed and Coded by Gahyi.xyz</div>
+                
 
                 <!--On Hover for Description and Title of Item-->
 
-                <div class="botright">
+                <div class="botleft">
 
                     <!--Book-->
                     <div class="book hidden">
@@ -218,32 +256,15 @@
                         <div class="itemdes">Think I got this for myself as a little graduation gift. Bought from a trinket collector. This isn't usually in my bag but it's cute.</div>
                         <div>PHB Porcelain Trinket</div> 
                     </div>
-
                     
 
                 </div>
 
+                <div class="botright">Designed and Coded by Gahyi.xyz</div>
+
             </div>
         
         </div>
-
-        <!--Mobile Version-->
-        <div id="mobile">
-            <div class="topleft">Scroll through the contents of my bag!</div>
-            <div class="mobilerow">
-                <div class="mobileimg">
-                    <img src="">
-                </div>
-                <div class="mobiledesc">
-
-                </div>
-                
-
-            </div>
-
-
-        </div>
-        
 
     </body>
     <script src="../What's in my bag/mybag.js"></script>
