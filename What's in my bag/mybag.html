@@ -14,73 +14,73 @@
 
         <!--Media Query stuff for window resize-->
         <script>
-            //media query resize test
             document.addEventListener('DOMContentLoaded', () => {
                 const container = document.getElementById('containment-wrapper');
-                const parent = document.getElementById('containment-wrapper');
+                const image = document.querySelector('.background-image');
                 const divs = document.querySelectorAll('.draggable');
                 
-                let containerRect = container.getBoundingClientRect();
-
                 function updateContainerRect() {
-                    containerRect = container.getBoundingClientRect();
+                    return container.getBoundingClientRect();
                 }
-
+                
+                function updateImageRect() {
+                    return image.getBoundingClientRect();
+                }
+                
+                function positionDivs() {
+                    const imageRect = updateImageRect();
+                    const containerRect = updateContainerRect();
+                    
+                    const offsetX = imageRect.left - containerRect.left;
+                    const offsetY = imageRect.top - containerRect.top;
+        
+                    divs.forEach(div => {
+                        const dataX = div.getAttribute('data-x');
+                        const dataY = div.getAttribute('data-y');
+                        
+                        // Convert percentages to pixels
+                        const boxX = parseFloat(dataX) / 100 * imageRect.width;
+                        const boxY = parseFloat(dataY) / 100 * imageRect.height;
+                        
+                        // Calculate the position of the box relative to the image
+                        const left = offsetX + boxX;
+                        const top = offsetY + boxY;
+        
+                        // Apply the position to the div
+                        div.style.left = `${left}px`;
+                        div.style.top = `${top}px`;
+                    });
+                }
+        
                 function constrainDivs() {
                     // Get the updated container dimensions
-                    updateContainerRect();
-
+                    const containerRect = updateContainerRect();
+                    
                     divs.forEach(div => {
                         const divRect = div.getBoundingClientRect();
                         let left = parseFloat(div.style.left) || 0;
                         let top = parseFloat(div.style.top) || 0;
-
+        
                         // Constrain the div within the container
                         left = Math.max(0, Math.min(left, containerRect.width - divRect.width));
                         top = Math.max(0, Math.min(top, containerRect.height - divRect.height));
-
+        
                         // Apply the constrained positions
                         div.style.left = `${left}px`;
                         div.style.top = `${top}px`;
                     });
                 }
-
-                $(function() {
-                    function setInitialPosition() {
-                        // Calculate the image's dimensions and offset
-                        var $image = $('.background-image');
-                            var imageWidth = $image.width();
-                            var imageHeight = $image.height();
-
-                        $('.draggable').each(function() {
-                            // Retrieve initial percentage values from data attributes
-                            var topPercent = $(this).data('top');
-                            var leftPercent = $(this).data('left');
-
-                            // Convert percentage to pixel value
-                            var leftPixels = (parseFloat(leftPercent) / 100) * imageWidth;
-                            var topPixels = (parseFloat(topPercent) / 100) * imageHeight;
-
-                            // Set the position of the draggable element
-                            $(this).css({
-                                top: topPixels + 'px',
-                                left: leftPixels + 'px'
-                            });
-                        });
-                    }
-
-                    // Call the function to set initial positions
-                    setInitialPosition();
+                
+                // Initial positioning and constraint on load
+                positionDivs();
+                constrainDivs();
+                
+                // Recalculate position and constraints on window resize
+                window.addEventListener('resize', () => {
+                    
+                    constrainDivs();
                 });
-
-       
-                // Initial constraint and initial position on load
-                constrainDivs();   
-                // Constrain divs on window resize
-                window.addEventListener('resize', constrainDivs);
-                       
             });
-
         </script>
 
         <!--jqueryui for draggable widgetw-->
@@ -116,67 +116,67 @@
                 </div>
                 
                 <!--Book-->
-                <div class="draggable draggablelarge ui-widget-content" data-top="20%" data-left="65%">
+                <div class="draggable draggablelarge ui-widget-content" data-x="65%" data-y="40%">
                     <img class="large" id="hoverbook" src="../What's in my bag/mybag images/book.PNG">
                 </div>   
                 <!--Headphones-->
-                <div class="draggable draggablelarge ui-widget-content" data-top="55%" data-left="10%">
+                <div class="draggable draggablelarge ui-widget-content" data-x="55%" data-y="20%">
                     <img class="large" id="hoverheadphones" src="../What's in my bag/mybag images/headphones.PNG">
                 </div>
                 <!--Lighter-->
-                <div class="draggable draggablesmall ui-widget-content" data-top="30%" data-left="5%">
+                <div class="draggable draggablesmall ui-widget-content" data-x="40%" data-y="10%">
                     <img class="small" id="hoverlighter" src="../What's in my bag/mybag images/lighter.PNG">
                 </div>
                 <!--Wallet-->
-                <div class="draggable draggablesmall ui-widget-content" data-top="18%" data-left="28%">
+                <div class="draggable draggablesmall ui-widget-content" data-x="18%" data-y="28%">
                     <img class="small" id="hoverwallet" src="../What's in my bag/mybag images/wallet.PNG">
                 </div>
                 <!--Keys-->
-                <div class="draggable draggablesmall ui-widget-content"  data-top="45%" data-left="60%">
+                <div class="draggable draggablesmall ui-widget-content"  data-x="30%" data-y="20%">
                     <img class="small" id="hoverkeys" src="../What's in my bag/mybag images/keys.PNG">
                 </div>
                 <!--Cube-->
-                <div class="draggable draggablesmall ui-widget-content" data-top="50%" data-left="15%">
+                <div class="draggable draggablesmall ui-widget-content" data-x="50%" data-y="15%">
                     <img class="small" id="hovercube" src="../What's in my bag/mybag images/cube.PNG">
                 </div>
                 <!--Aquaphor-->
-                <div class="draggable draggablemedium ui-widget-content"  data-top="50%" data-left="40%">
+                <div class="draggable draggablemedium ui-widget-content"  data-x="50%" data-y="40%">
                     <img class="medium" id="hoveraquaphor" src="../What's in my bag/mybag images/aquaphor.PNG">
                 </div>
                 <!--FaceCushion-->
-                <div class="draggable draggablesmall ui-widget-content"  data-top="25%" data-left="50%"> 
+                <div class="draggable draggablesmall ui-widget-content"  data-x="25%" data-y="50%"> 
                     <img class="small" id="hoverfacecushion" src="../What's in my bag/mybag images/facecushion.png">
                 </div>
                 <!--Glasses-->
-                <div class="draggable draggablemedium ui-widget-content" data-top="20%" data-left="25%">
+                <div class="draggable draggablemedium ui-widget-content" data-x="20%" data-y="25%">
                     <img class="medium" id="hoverglasses" src="../What's in my bag/mybag images/glasses2.png">
                 </div>
                 <!--Perfume-->
-                <div class="draggable draggablemediumlarge ui-widget-content" data-top="10%" data-left="45%">
+                <div class="draggable draggablemediumlarge ui-widget-content" data-x="20%" data-y="45%">
                     <img class="mediumlarge" id="hoverperfume" src="../What's in my bag/mybag images/perfume2.png">
                 </div>
                 <!--External Hard Drive-->
-                <div class="draggable draggablemedium ui-widget-content" data-top="30%" data-left="35%">
+                <div class="draggable draggablemedium ui-widget-content" data-x="30%" data-y="35%">
                     <img class="medium" id="hoverharddrive" src="../What's in my bag/mybag images/harddrive.PNG">
                 </div>
                 <!--Phone-->
-                <div class="draggable draggablemedium ui-widget-content" data-top="50%" data-left="50%">
+                <div class="draggable draggablemedium ui-widget-content" data-x="50%" data-y="45%">
                     <img class="medium" id="hoverphone" src="../What's in my bag/mybag images/phone.PNG">
                 </div>
                 <!--Keychain-->
-                <div class="draggable draggablesmall ui-widget-content" data-top="40%" data-left="25%">
+                <div class="draggable draggablesmall ui-widget-content" data-x="40%" data-y="30%">
                     <img class="small" id="hoverkeychain" src="../What's in my bag/mybag images/keychain.PNG">
                 </div>
                 <!--Camera-->
-                <div class="draggable draggablemedium ui-widget-content" data-top="50%" data-left="65%">
+                <div class="draggable draggablemedium ui-widget-content" data-x="50%" data-y="55%">
                     <img class="medium" id="hovercamera" src="../What's in my bag/mybag images/camera.PNG">
                 </div>
                 <!--Ashwagandha-->
-                <div class="draggable draggablemedium ui-widget-content" data-top="25%" data-left="15%">
+                <div class="draggable draggablemedium ui-widget-content" data-x="25%" data-y="25%">
                     <img style="rotate: 90deg;" class="medium" id="hoverashwagandha" src="../What's in my bag/mybag images/ashwagandha.png">
                 </div>
                 <!--Trinket-->
-                <div class="draggable draggablesmall ui-widget-content" data-top="35%" data-left="60%">
+                <div class="draggable draggablesmall ui-widget-content" data-x="40%" data-y="45%">
                     <img class="small" id="hovertrinket" src="../What's in my bag/mybag images/trinket.png">
                 </div>
 
@@ -258,7 +258,7 @@
 
                     <!--Phone-->
                     <div class="phone hidden">
-                        <div class="itemdes">To call my mom when she leaves me at the grocery store.</div>
+                        <div class="itemdes">To call my mom when she leaves me at the grocery store or parking lot.</div>
                         <div>iPhone</div> 
                     </div>
 
@@ -276,7 +276,7 @@
 
                     <!--Ashwagandha-->
                     <div class="ashwagandha hidden">
-                        <div class="itemdes">In a never-ending cycle of disassociating. Two gummies a day.</div>
+                        <div class="itemdes">In a never-ending cycle of disassociating. Two gummies a day. Great for regulating PCOS symptoms.</div>
                         <div>Ashwaganda Gummies</div> 
                     </div>
 

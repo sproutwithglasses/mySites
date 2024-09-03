@@ -32,6 +32,14 @@
     
     }
 
+    .topright{
+        position: relative;
+        text-align: right;
+        display: inline-block;
+        width: 25%;
+        margin-left: 23%;
+    }
+
     .botleft{
         position: relative;
         text-align: left;
@@ -131,6 +139,14 @@
     
     }
 
+    .topright{
+        position: relative;
+        text-align: right;
+        display: inline-block;
+        width: 25%;
+        margin-left: 25%;
+    }
+
     .botleft{
         position: relative;
         text-align: left;
@@ -228,6 +244,14 @@
     
     }
 
+    .topright{
+        position: relative;
+        text-align: right;
+        display: inline-block;
+        width: 25%;
+        margin-left: 25%;
+    }
+
     .botleft{
         position: relative;
         text-align: left;
@@ -323,11 +347,19 @@
     
     }
 
+    .topright{
+        position: relative;
+        text-align: right;
+        display: inline-block;
+        width: 25%;
+        margin-left: 25%;
+    }
+
     .botleft{
         position: relative;
         text-align: left;
         display: inline-block;
-        width: 30%;
+        width: 28%;
         
     }
     
@@ -336,7 +368,7 @@
         text-align: right;
         display: inline-block;
         width: 25%;
-        margin-left: 43%;
+        margin-left: 45%;
         
         
     }
@@ -436,14 +468,6 @@ body{
     text-align: left;
     display: inline-block;
     width: 48%;
-}
-
-.topright{
-    position: relative;
-    text-align: right;
-    display: inline-block;
-    width: 25%;
-    margin-left: 25%;
 }
 
 .bottompage{
