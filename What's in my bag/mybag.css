@@ -32,20 +32,30 @@
     
     }
 
+    .topleft{
+        position: relative;
+        text-align: left;
+        display: inline-block;
+        width: 48%;
+        font-size: 85%;
+    }
+
     .topright{
         position: relative;
         text-align: right;
         display: inline-block;
-        width: 25%;
-        margin-left: 23%;
+        width: 48%;
+        margin-right: 2%;
+        font-size: 85%;
+        
     }
 
     .botleft{
         position: relative;
         text-align: left;
         display: inline-block;
-        width: 100%;
-        margin-bottom: 10%;
+        width: 90%;
+        margin-bottom: 5%;
         
     }
     
@@ -53,7 +63,9 @@
         position: relative;
         text-align: left;
         display: inline-block;
-        width: 100%;
+        width: 85%;
+        margin-bottom:-5%;
+        font-size: 85%;
         
         
         
@@ -137,6 +149,13 @@
         transition: transform .5s; /* Animation */
         position: absolute;
     
+    }
+
+    .topleft{
+        position: relative;
+        text-align: left;
+        display: inline-block;
+        width: 48%;
     }
 
     .topright{
@@ -244,6 +263,13 @@
     
     }
 
+    .topleft{
+        position: relative;
+        text-align: left;
+        display: inline-block;
+        width: 48%;
+    }
+
     .topright{
         position: relative;
         text-align: right;
@@ -345,6 +371,13 @@
         transition: transform .5s; /* Animation */
         position: absolute;
     
+    }
+
+    .topleft{
+        position: relative;
+        text-align: left;
+        display: inline-block;
+        width: 48%;
     }
 
     .topright{
@@ -461,13 +494,6 @@ body{
     font-weight: 400;
     font-style: normal;
     font-size: 1250%;
-}
-
-.topleft{
-    position: relative;
-    text-align: left;
-    display: inline-block;
-    width: 48%;
 }
 
 .bottompage{
