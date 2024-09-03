@@ -18,23 +18,7 @@
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-        <script>
-
-            $( function() {
-                $( " .draggable " ).draggable({ containment: "#containment-wrapper", scroll: false,  stack: "#containment-wrapper div"  });
-            } );
-
-            $(document).ready(function() {
-                $(".draggable").draggable({
-                    // Options if needed
-                });
-            });
-        
-           
-        </script>
-
-        
-        
+    
     </head>
 
 
@@ -233,31 +217,40 @@
         
         </div>
 
-        <!--Media Query stuff for window resize-->
+        <!-- Scripts -->
         <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const container = document.getElementById('containment-wrapper');
-                const image = document.querySelector('.background-image');
-                const divs = document.querySelectorAll('.draggable');
-                
+            $(document).ready(function() {
+                // Initialize draggable
+                $(".draggable").draggable({
+                    containment: "#containment-wrapper",
+                    scroll: false,
+                    stack: "#containment-wrapper div"
+                });
+
+                // Position and constrain draggable elements
+                const container = $('#containment-wrapper');
+                const image = $('.background-image');
+                const divs = $('.draggable');
+
                 function updateContainerRect() {
-                    return container.getBoundingClientRect();
+                    return container[0].getBoundingClientRect();
                 }
-                
+
                 function updateImageRect() {
-                    return image.getBoundingClientRect();
+                    return image[0].getBoundingClientRect();
                 }
-                
+
                 function positionDivs() {
                     const imageRect = updateImageRect();
                     const containerRect = updateContainerRect();
-                    
+
                     const offsetX = imageRect.left - containerRect.left;
                     const offsetY = imageRect.top - containerRect.top;
-        
-                    divs.forEach(div => {
-                        const dataX = div.getAttribute('data-x');
-                        const dataY = div.getAttribute('data-y');
+
+                    divs.each(function() {
+                        const div = $(this);
+                        const dataX = div.data('x');
+                        const dataY = div.data('y');
                         
                         // Convert percentages to pixels
                         const boxX = parseFloat(dataX) / 100 * imageRect.width;
@@ -266,29 +259,28 @@
                         // Calculate the position of the box relative to the image
                         const left = offsetX + boxX;
                         const top = offsetY + boxY;
-        
+
                         // Apply the position to the div
-                        div.style.left = `${left}px`;
-                        div.style.top = `${top}px`;
+                        div.css({ left: `${left}px`, top: `${top}px` });
                     });
                 }
-        
+
                 function constrainDivs() {
                     // Get the updated container dimensions
                     const containerRect = updateContainerRect();
                     
-                    divs.forEach(div => {
-                        const divRect = div.getBoundingClientRect();
-                        let left = parseFloat(div.style.left) || 0;
-                        let top = parseFloat(div.style.top) || 0;
-        
+                    divs.each(function() {
+                        const div = $(this);
+                        const divRect = div[0].getBoundingClientRect();
+                        let left = parseFloat(div.css('left')) || 0;
+                        let top = parseFloat(div.css('top')) || 0;
+
                         // Constrain the div within the container
                         left = Math.max(0, Math.min(left, containerRect.width - divRect.width));
                         top = Math.max(0, Math.min(top, containerRect.height - divRect.height));
-        
+
                         // Apply the constrained positions
-                        div.style.left = `${left}px`;
-                        div.style.top = `${top}px`;
+                        div.css({ left: `${left}px`, top: `${top}px` });
                     });
                 }
                 
@@ -297,8 +289,7 @@
                 constrainDivs();
                 
                 // Recalculate position and constraints on window resize
-                window.addEventListener('resize', () => {
-                    
+                $(window).on('resize', function() {
                     constrainDivs();
                 });
             });
