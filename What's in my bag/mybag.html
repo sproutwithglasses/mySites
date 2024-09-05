@@ -51,7 +51,7 @@
                 </div>
                 <!--Wallet-->
                 <div class="draggable draggablesmall ui-widget-content" data-x="18%" data-y="28%">
-                    <img class="small" id="hoverwallet" src="../What's in my bag/mybag images/wallet.PNG">
+                    <img class="small" id="hoverwallet" src="../What's in my bag/mybag images/wa">
                 </div>
                 <!--Keys-->
                 <div class="draggable draggablesmall ui-widget-content"  data-x="30%" data-y="20%">
@@ -220,71 +220,68 @@
         <!-- Scripts -->
         <script>
             $(document).ready(function() {
-                // Initialize draggable
-                $(".draggable").draggable({
-                    containment: "#containment-wrapper",
-                    scroll: false,
-                    stack: "#containment-wrapper div"
-                });
-
-                // Position and constrain draggable elements
-                const container = $('#containment-wrapper');
-                const image = $('.background-image');
-                const divs = $('.draggable');
-
-                function updateContainerRect() {
-                    return container[0].getBoundingClientRect();
-                }
-
-                function updateImageRect() {
-                    return image[0].getBoundingClientRect();
-                }
-
-                function positionDivs() {
-                    const imageRect = updateImageRect();
-                    const containerRect = updateContainerRect();
-
-                    const offsetX = imageRect.left - containerRect.left;
-                    const offsetY = imageRect.top - containerRect.top;
-
-                    divs.each(function() {
-                        const div = $(this);
-                        const dataX = div.data('x');
-                        const dataY = div.data('y');
-                        
-                        // Convert percentages to pixels
-                        const boxX = parseFloat(dataX) / 100 * imageRect.width;
-                        const boxY = parseFloat(dataY) / 100 * imageRect.height;
-                        
-                        // Calculate the position of the box relative to the image
-                        const left = offsetX + boxX;
-                        const top = offsetY + boxY;
-
-                        // Apply the position to the div
-                        div.css({ left: `${left}px`, top: `${top}px` });
+                function initialize() {
+                    // Initialize draggable
+                    $(".draggable").draggable({
+                        containment: "#containment-wrapper",
+                        scroll: false,
+                        stack: "#containment-wrapper div"
                     });
-                }
-
-                function constrainDivs() {
-                    // Get the updated container dimensions
-                    const containerRect = updateContainerRect();
-                    
-                    divs.each(function() {
-                        const div = $(this);
-                        const divRect = div[0].getBoundingClientRect();
-                        let left = parseFloat(div.css('left')) || 0;
-                        let top = parseFloat(div.css('top')) || 0;
-
-                        // Constrain the div within the container
-                        left = Math.max(0, Math.min(left, containerRect.width - divRect.width));
-                        top = Math.max(0, Math.min(top, containerRect.height - divRect.height));
-
-                        // Apply the constrained positions
-                        div.css({ left: `${left}px`, top: `${top}px` });
-                    });
-                }
-                
-                    // Initial positioning and constraint on load
+            
+                    // Position and constrain draggable elements
+                    function updateContainerRect() {
+                        return $('#containment-wrapper')[0].getBoundingClientRect();
+                    }
+            
+                    function updateImageRect() {
+                        return $('.background-image')[0].getBoundingClientRect();
+                    }
+            
+                    function positionDivs() {
+                        const imageRect = updateImageRect();
+                        const containerRect = updateContainerRect();
+            
+                        const offsetX = imageRect.left - containerRect.left;
+                        const offsetY = imageRect.top - containerRect.top;
+            
+                        $('.draggable').each(function() {
+                            const div = $(this);
+                            const dataX = div.data('x');
+                            const dataY = div.data('y');
+                            
+                            // Convert percentages to pixels
+                            const boxX = parseFloat(dataX) / 100 * imageRect.width;
+                            const boxY = parseFloat(dataY) / 100 * imageRect.height;
+                            
+                            // Calculate the position of the box relative to the image
+                            const left = offsetX + boxX;
+                            const top = offsetY + boxY;
+            
+                            // Apply the position to the div
+                            div.css({ left: `${left}px`, top: `${top}px` });
+                        });
+                    }
+            
+                    function constrainDivs() {
+                        // Get the updated container dimensions
+                        const containerRect = updateContainerRect();
+                        
+                        $('.draggable').each(function() {
+                            const div = $(this);
+                            const divRect = div[0].getBoundingClientRect();
+                            let left = parseFloat(div.css('left')) || 0;
+                            let top = parseFloat(div.css('top')) || 0;
+            
+                            // Constrain the div within the container
+                            left = Math.max(0, Math.min(left, containerRect.width - divRect.width));
+                            top = Math.max(0, Math.min(top, containerRect.height - divRect.height));
+            
+                            // Apply the constrained positions
+                            div.css({ left: `${left}px`, top: `${top}px` });
+                        });
+                    }
+            
+                    // Initial positioning and constraint
                     positionDivs();
                     constrainDivs();
                     
@@ -292,12 +289,50 @@
                     $(window).on('resize', function() {
                         constrainDivs();
                     });
-                });
-
-                // Ensure images are fully loaded before running the script
-                $('.background-image').on('load', initialize);
-                // Ensure draggable elements images are also loaded
-                $('.draggable img').on('load', initialize);
+                }
+            
+                // Function to handle the completion of image loading
+                function onAllImagesLoaded() {
+                    initialize();
+                }
+            
+                // Check if all images are loaded
+                function checkImagesLoaded() {
+                    const images = $('img');
+                    let loadedImages = 0;
+                    const totalImages = images.length;
+            
+                    if (totalImages === 0) {
+                        onAllImagesLoaded();
+                        return;
+                    }
+            
+                    images.each(function() {
+                        if (this.complete) {
+                            loadedImages++;
+                            if (loadedImages === totalImages) {
+                                onAllImagesLoaded();
+                            }
+                        } else {
+                            $(this).on('load', function() {
+                                loadedImages++;
+                                if (loadedImages === totalImages) {
+                                    onAllImagesLoaded();
+                                }
+                            }).on('error', function() {
+                                // Handle errors if needed
+                                loadedImages++;
+                                if (loadedImages === totalImages) {
+                                    onAllImagesLoaded();
+                                }
+                            });
+                        }
+                    });
+                }
+            
+                // Ensure all images are fully loaded before initializing draggable and positioning
+                checkImagesLoaded();
+            });
             </script>
         <script src="../What's in my bag/mybag.js"></script>
     </body>
