@@ -284,16 +284,21 @@
                     });
                 }
                 
-                // Initial positioning and constraint on load
-                positionDivs();
-                constrainDivs();
-                
-                // Recalculate position and constraints on window resize
-                $(window).on('resize', function() {
+                    // Initial positioning and constraint on load
+                    positionDivs();
                     constrainDivs();
+                    
+                    // Recalculate position and constraints on window resize
+                    $(window).on('resize', function() {
+                        constrainDivs();
+                    });
                 });
-            });
-        </script>
+
+                // Ensure images are fully loaded before running the script
+                $('.background-image').on('load', initialize);
+                // Ensure draggable elements images are also loaded
+                $('.draggable img').on('load', initialize);
+            </script>
         <script src="../What's in my bag/mybag.js"></script>
     </body>
     

@@ -61,7 +61,7 @@
         text-align: left;
         display: inline-block;
         width: 90%;
-        margin-bottom: 2%;
+        margin-bottom: 4%;
         font-size: 90%;
         
     }
@@ -140,7 +140,7 @@
     }
 
     #mybag{
-        width: 130%;
+        width: 128%;
         margin-left: auto;
         margin-right: auto;
         margin-top: -5%;
@@ -162,7 +162,7 @@
         position: relative;
         text-align: left;
         display: inline-block;
-        width: 48%;
+        width: 45%;
     }
 
     .topright{
@@ -170,7 +170,7 @@
         text-align: right;
         display: inline-block;
         width: 25%;
-        margin-left: 25%;
+        margin-left: 28%;
     }
 
     .bottompage{
@@ -258,7 +258,7 @@
     }
 
     #mybag{
-        width: 1320px;
+        width: 1315px;
         margin-left: auto;
         margin-right: auto;
         margin-top: -5%;
