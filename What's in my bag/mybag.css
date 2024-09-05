@@ -60,7 +60,7 @@
         position: relative;
         text-align: left;
         display: inline-block;
-        width: 90%;
+        width: 83%;
         margin-bottom: 4%;
         font-size: 90%;
         
@@ -73,9 +73,7 @@
         width: 85%;
         margin-bottom:-10%;
         font-size: 85%;
-        
-        
-        
+
     }
     
     /*Hover Properties */
@@ -183,7 +181,7 @@
         position: relative;
         text-align: left;
         display: inline-block;
-        width: 40%;
+        width: 30%;
         
     }
     
@@ -192,7 +190,7 @@
         text-align: right;
         display: inline-block;
         width: 37%;
-        margin-left: 20%;
+        margin-left: 30%;
         
         
     }
@@ -301,7 +299,7 @@
         position: relative;
         text-align: left;
         display: inline-block;
-        width: 30%;
+        width: 20%;
         
     }
     
@@ -310,7 +308,7 @@
         text-align: right;
         display: inline-block;
         width: 25%;
-        margin-left: 43%;
+        margin-left: 53%;
         
         
     }
@@ -422,11 +420,12 @@
     }
     
     .botright{
-        position: relative;
+        position: absolute;
         text-align: right;
         display: inline-block;
-        width: 25%;
-        margin-left: 45%;
+        width: 70%;
+
+        bottom: 3%;
         
         
     }
@@ -524,7 +523,7 @@ body{
 
 /*Item name and Description */
 .itemdes{
-    color: rgba(0, 0, 0, 0.425);
+    color: rgba(0, 0, 0, 0.601);
     margin-bottom: 3%;
 }
 
@@ -532,4 +531,15 @@ body{
     display: none;
 }
 
+.box{
+    width: 110%; 
+    background-color: rgba(245, 244, 244, 0.749); 
+    border-radius: 15px; 
+    border: 2px; 
+    padding: 10px;
+    position: absolute;
+    bottom: 3%;
+    
+    
+}
 
